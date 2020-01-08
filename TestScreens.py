@@ -1,6 +1,7 @@
 from tkinter import *
 import time
 from DatabaseHandler import *
+
 #from WheelTestGUI import database_stuff
 
 #VARIABLES
@@ -9,7 +10,8 @@ expectedentries = []
 
 
 class CreateTest:
-    def new_test():
+
+    def new_test(self):
         newtestwindow = Toplevel()
         varPF = StringVar()
         choicePF = ("Pass", "Fail")

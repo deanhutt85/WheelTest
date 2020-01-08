@@ -1,6 +1,6 @@
 import mysql.connector
 
-from TestScreens import *
+from TestScreens_BACKUP import *
 
 
 # cursor = mydb.cursor()
@@ -10,6 +10,7 @@ class WheelTestGUI:
     def __init__(self, master):
 
         DB = database_stuff()
+        TS = CreateTest()
         serial = 12345
         orderno = 112233
         wheeltype = "Saturn"
@@ -28,7 +29,7 @@ class WheelTestGUI:
         button2 = Button(master, text="Insert Stuff", command=popupboxes.listbox).grid(column=2, row=1)
         self.button3 = Button(master, text="selectwhere", command=lambda: DB.selectserial(self.varentryserial.get()))
         self.button3.grid(column=3, row=3)
-        self.button4 = Button(master, text="New Test", command=lambda: CreateTest.new_test())
+        self.button4 = Button(master, text="New Test", command=lambda: TS.new_test())
         self.button4.grid(column=0, row=4)
         self.button5 = Button(master, text="Create Tables", command=lambda: DB.create_tables)
         self.button5.grid(column=2, row=4)
@@ -96,6 +97,8 @@ class database_stuff():
             self.cursor.execute("CREATE TABLE wheelid (id INT AUTO_INCREMENT PRIMARY KEY, serial INT(10), orderno INT(10), wheeltype VARCHAR(255), datecreate DATE, dateupdate DATE)")
         except mysql.connector.Error as err:
             popupboxes.popupmsg("ERROR CREATING TABLES: {}".format(err))
+
+
 
 
 root = Tk()
