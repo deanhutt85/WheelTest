@@ -1,7 +1,7 @@
 from tkinter import *
 import time
 from DatabaseHandler import *
-#from WheelTestGUI import database_stuff
+
 
 #VARIABLES
 actualentries = []
@@ -292,9 +292,15 @@ class CreateTest:
         print(self.cwactvariables[0].get())
         # for i in newvar:
         #     print(i.get())
-
+#STILL NEED WORK
     def savedata(self):
+        from WheelTestGUI import database_stuff
+        db = database_stuff()
         print("Saving Data")
+        self.serialwheel.get()
+        db.insert_new_data('INSERT INTO section_1 VALUES(NULL,%s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (self.varPF0cwleft.get(), self.varPF0cwright.get(), self.varPF0ccwleft.get(), self.varPF0ccwright.get(), self.varPF5cwleft.get(), self.varPF5cwright.get(), self.varPF5ccwleft.get(), self.varPF5ccwright.get(), self.varPF9cwleft.get(), self.varPF9cwright.get(), self.varPF9ccwleft.get(), self.varPF9ccwright.get(), self.varPF34cwleft.get(), self.varPF34cwright.get(), self.varPF34ccwleft.get(), self.varPF34ccwright.get(), self.varPFslowcwleft.get(), self.varPFslowcwright.get(), self.varPFslowccwleft.get(), self.varPFslowccwright.get()')
+
+
 
 
 

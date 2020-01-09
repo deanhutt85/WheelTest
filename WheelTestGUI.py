@@ -6,11 +6,11 @@ from TestScreens_BACKUP import *
 # cursor = mydb.cursor()
 # from DatabaseHandler import DatabaseCommands as DB
 
+TS = CreateTest()
+
 class WheelTestGUI:
     def __init__(self, master):
-
         DB = database_stuff()
-        TS = CreateTest()
         serial = 12345
         orderno = 112233
         wheeltype = "Saturn"
@@ -31,7 +31,7 @@ class WheelTestGUI:
         self.button3.grid(column=3, row=3)
         self.button4 = Button(master, text="New Test", command=lambda: TS.new_test())
         self.button4.grid(column=0, row=4)
-        self.button5 = Button(master, text="Create Tables", command=lambda: DB.create_tables)
+        self.button5 = Button(master, text="Create Tables", command=lambda: DB.create_tables())
         self.button5.grid(column=2, row=4)
         Button(master, text="CLOSE", command=master.destroy).grid(column=2, row=5)
 
@@ -39,6 +39,7 @@ class popupboxes:
     def popupmsg(msg):
         popup = Tk()
         popup.wm_title("!")
+        print(msg)
         label = Label(popup, text=msg)
         label.pack(side="top", fill="x", pady=10)
         B1 = Button(popup, text="Okay", command=popup.destroy)
@@ -88,15 +89,35 @@ class database_stuff():
             print(x)
             popupboxes.listbox(x)
 
-    def insert_new_data():
-        self.cursor.execute("INSERT INTO wheelid (serial, orderno, wheeltype, datecreate, dateupdate) VALUES (%s,%s,%s,%s,%s)", (TS.serialwheel.get(), asasd , serial  , datecreate, dateupdate))
+    def insert_new_data(self, sqlcmd2):
+        # self.cursor.execute("INSERT INTO wheelid (serial, orderno, wheeltype, datecreate, dateupdate) VALUES (%s,%s,%s,%s,%s)", (TS.serialwheel.get(), asasd , serial  , datecreate, dateupdate))
+        self.cursor.execute(sqlcmd2)
 
     def create_tables(self):
         try:
-            self.cursor.execute("CREATE TABLE wheelid (id INT AUTO_INCREMENT PRIMARY KEY, serial INT(10), orderno INT(10), wheeltype VARCHAR(255), datecreate DATE, dateupdate DATE)")
+            self.cursor.execute("SHOW TABLES")
+            print(self.cursor.fetchall())
             self.cursor.execute("CREATE TABLE wheelid (id INT AUTO_INCREMENT PRIMARY KEY, serial INT(10), orderno INT(10), wheeltype VARCHAR(255), datecreate DATE, dateupdate DATE)")
         except mysql.connector.Error as err:
-            popupboxes.popupmsg("ERROR CREATING TABLES: {}".format(err))
+            self.cursor.execute("SHOW TABLES")
+            print(self.cursor.fetchall())
+            popupboxes.popupmsg(str(err))
+        try:
+            self.cursor.execute("CREATE TABLE section_1 (id INT AUTO_INCREMENT PRIMARY KEY, serial INT(10), CWLeft_0 "
+                                "VARCHAR(255), CWRight_0 VARCHAR(255), CWCLeft_0 VARCHAR(255), CCWRight_0 VARCHAR("
+                                "255), CWLeft_5 VARCHAR(255), CWRight_5 VARCHAR(255), CWCLeft_5 VARCHAR(255), "
+                                "CCWRight_5 VARCHAR(255), CWLeft_9 VARCHAR(255), CWRight_9 VARCHAR(255), "
+                                "CWCLeft_9 VARCHAR(255), CCWRight_9 VARCHAR(255), CWLeft_34 VARCHAR(255), CWRight_34 "
+                                "VARCHAR(255), CWCLeft_34 VARCHAR(255), CCWRight_34 VARCHAR(255), CWLeft_22mm "
+                                "VARCHAR(255), CWRight_22mm VARCHAR(255), CWCLeft_22mm VARCHAR(255), CCWRight_22mm "
+                                "VARCHAR(255))")
+        except mysql.connector.Error as err:
+            self.cursor.execute("SHOW TABLES")
+            print(self.cursor.fetchall())
+            popupboxes.popupmsg(str(err))
+
+
+
 
 
 
