@@ -46,65 +46,6 @@ class CreateTest:
         self.varPFslowccwleft = StringVar(value='Not Selected')
         self.varPFslowccwright = StringVar(value='Not Selected')
 
-        ### SECTION 2 ###
-        # THese are for the 30 tests
-        #Clockwise Actual Column
-        self.cwactvariables = []
-        for i in range(30):
-            self.cwactvariables.append(IntVar())
-
-        self.cwactlabels = []
-        self.cwactentrys = []
-        for ii in range(15):
-            self.char = ii + 1
-            self.offset = self.char + 10
-            self.cwactlabels.append(Label(self.newtestwindow, text = self.char))
-            self.cwactlabels[-1].grid(row=self.offset, column=0)
-            self.cwactentrys.append(Entry(self.newtestwindow, textvariable = self.cwactvariables[ii]))
-            self.cwactentrys[-1].grid(row=self.offset, column=1)
-
-
-        # Counter-Clockwise Actual Column
-        self.ccwactvariables = []
-        for i in range(30):
-            self.ccwactvariables.append(IntVar())
-
-        self.ccwactlabels = []
-        self.ccwactentrys = []
-        for ii in range(15):
-            self.char = ii + 1
-            self.offset = self.char + 26
-            self.ccwactlabels.append(Label(self.newtestwindow, text=self.char))
-            self.ccwactlabels[-1].grid(row=self.offset, column=0)
-            self.ccwactentrys.append(Entry(self.newtestwindow, textvariable=self.ccwactvariables[ii]))
-            self.ccwactentrys[-1].grid(row=self.offset, column=1)
-
-        #Clockwise Recorded Column
-        self.cwrecvariables = []
-        for i in range(30):
-            self.cwrecvariables.append(IntVar())
-
-        self.cwrecentrys = []
-        for ii in range(15):
-            self.char = ii + 1
-            self.offset = self.char + 10
-            self.cwrecentrys.append(Entry(self.newtestwindow, textvariable = self.cwrecvariables[ii]))
-            self.cwrecentrys[-1].grid(row=self.offset, column=2)
-
-        # Counter-Clockwise Actual Column
-        self.ccwrecvariables = []
-        for i in range(30):
-            self.ccwrecvariables.append(IntVar())
-
-        self.ccwrecentrys = []
-        for ii in range(15):
-            self.char = ii + 1
-            self.offset = self.char + 26
-            self.ccwrecentrys.append(Entry(self.newtestwindow, textvariable=self.ccwrecvariables[ii]))
-            self.ccwrecentrys[-1].grid(row=self.offset, column=2)
-
-            return self.cwactvariables, self.cwrecvariables, self.ccwactvariables, self.ccwrecvariables
-        
         ### SECTION 3 ###
         self.phasered = IntVar()
         self.phaseblack = IntVar()
@@ -145,11 +86,66 @@ class CreateTest:
         self.wnd2ccwdisplayed = IntVar()
         self.retest = BooleanVar()
         self.timenow = time.strftime('%Y-%m-%d %H:%M:%S')
-        #These are the variables for the dropdowns
-        #0
+
+        ### SECTION 2 ###
+        # THese are for the 30 tests
+        #Clockwise Actual Column
+        self.cwactvariables = []
+        for i in range(15):
+            self.cwactvariables.append(IntVar())
+
+        self.cwactlabels = []
+        self.cwactentrys = []
+        for ii in range(15):
+            self.char = ii + 1
+            self.offset = self.char + 10
+            self.cwactlabels.append(Label(self.newtestwindow, text = self.char))
+            self.cwactlabels[-1].grid(row=self.offset, column=0)
+            self.cwactentrys.append(Entry(self.newtestwindow, textvariable = self.cwactvariables[ii]))
+            self.cwactentrys[-1].grid(row=self.offset, column=1)
 
 
-        ### SECTION 1 ###
+        # Counter-Clockwise Actual Column
+        self.ccwactvariables = []
+        for i in range(15):
+            self.ccwactvariables.append(IntVar())
+
+        self.ccwactlabels = []
+        self.ccwactentrys = []
+        for ii in range(15):
+            self.char = ii + 1
+            self.offset = self.char + 26
+            self.ccwactlabels.append(Label(self.newtestwindow, text=self.char))
+            self.ccwactlabels[-1].grid(row=self.offset, column=0)
+            self.ccwactentrys.append(Entry(self.newtestwindow, textvariable=self.ccwactvariables[ii]))
+            self.ccwactentrys[-1].grid(row=self.offset, column=1)
+
+        #Clockwise Recorded Column
+        self.cwrecvariables = []
+        for i in range(15):
+            self.cwrecvariables.append(IntVar())
+
+        self.cwrecentrys = []
+        for ii in range(15):
+            self.char = ii + 1
+            self.offset = self.char + 10
+            self.cwrecentrys.append(Entry(self.newtestwindow, textvariable = self.cwrecvariables[ii]))
+            self.cwrecentrys[-1].grid(row=self.offset, column=2)
+
+        # Counter-Clockwise Actual Column
+        self.ccwrecvariables = []
+        for i in range(15):
+            self.ccwrecvariables.append(IntVar())
+
+        self.ccwrecentrys = []
+        for ii in range(15):
+            self.char = ii + 1
+            self.offset = self.char + 26
+            self.ccwrecentrys.append(Entry(self.newtestwindow, textvariable=self.ccwrecvariables[ii]))
+            self.ccwrecentrys[-1].grid(row=self.offset, column=2)
+
+            #return self.cwactvariables, self.cwrecvariables, self.ccwactvariables, self.ccwrecvariables
+        
 
         #These are the tkinter widgets on the page. Might split in to several pages yet
         self.lblNumber = Label(self.newtestwindow, text="Number", relief="groove", width=15).grid(column=0, row=1)
@@ -165,30 +161,30 @@ class CreateTest:
         self.lbl22mmzero = Label(self.newtestwindow, text="22mm Ball In Zero Test SLow Spin - 15RPM", relief="groove").grid(column=0, row=6, columnspan=3)
         #dropdowns for section 1
         #0
-        OptionMenu(self.newtestwindow, self.varPF0cwleft, *choicePF).grid(column = 1, row = 2)
-        OptionMenu(self.newtestwindow, self.varPF0cwright, *choicePF).grid(column = 2, row = 2)
-        OptionMenu(self.newtestwindow, self.varPF0ccwleft, *choicePF).grid(column = 3, row = 2)
-        OptionMenu(self.newtestwindow, self.varPF0ccwright, *choicePF).grid(column = 4, row = 2)
+        self.optPF0cwleft = OptionMenu(self.newtestwindow, self.varPF0cwleft, *self.choicePF).grid(column = 1, row = 2)
+        self.optPF0cwright = OptionMenu(self.newtestwindow, self.varPF0cwright, *self.choicePF).grid(column = 2, row = 2)
+        self.optPF0ccwleft = OptionMenu(self.newtestwindow, self.varPF0ccwleft, *self.choicePF).grid(column = 3, row = 2)
+        self.optPF0ccwright = OptionMenu(self.newtestwindow, self.varPF0ccwright, *self.choicePF).grid(column = 4, row = 2)
         #5
-        OptionMenu(self.newtestwindow, self.varPF5cwleft, *self.choicePF).grid(column = 1, row = 3)
-        OptionMenu(self.newtestwindow, self.varPF5cwright, *self.choicePF).grid(column = 2, row = 3)
-        OptionMenu(self.newtestwindow, self.varPF5ccwleft, *self.choicePF).grid(column = 3, row = 3)
-        OptionMenu(self.newtestwindow, self.varPF5ccwright, *self.choicePF).grid(column = 4, row = 3)
+        self.optPF5cwleft = OptionMenu(self.newtestwindow, self.varPF5cwleft, *self.choicePF).grid(column = 1, row = 3)
+        self.optPF5cwright = OptionMenu(self.newtestwindow, self.varPF5cwright, *self.choicePF).grid(column = 2, row = 3)
+        self.optPF5ccwleft = OptionMenu(self.newtestwindow, self.varPF5ccwleft, *self.choicePF).grid(column = 3, row = 3)
+        self.optPF5ccwright = OptionMenu(self.newtestwindow, self.varPF5ccwright, *self.choicePF).grid(column = 4, row = 3)
         #9
-        OptionMenu(self.newtestwindow, self.varPF9cwleft, *self.choicePF).grid(column = 1, row = 4)
-        OptionMenu(self.newtestwindow, self.varPF9cwright, *self.choicePF).grid(column = 2, row = 4)
-        OptionMenu(self.newtestwindow, self.varPF9ccwleft, *self.choicePF).grid(column = 3, row = 4)
-        OptionMenu(self.newtestwindow, self.varPF9ccwright, *self.choicePF).grid(column = 4, row = 4)
+        self.optPF9cwleft = OptionMenu(self.newtestwindow, self.varPF9cwleft, *self.choicePF).grid(column = 1, row = 4)
+        self.optPF9cwright = OptionMenu(self.newtestwindow, self.varPF9cwright, *self.choicePF).grid(column = 2, row = 4)
+        self.optPF9ccwleft = OptionMenu(self.newtestwindow, self.varPF9ccwleft, *self.choicePF).grid(column = 3, row = 4)
+        self.optPF9ccwright = OptionMenu(self.newtestwindow, self.varPF9ccwright, *self.choicePF).grid(column = 4, row = 4)
         #34
-        OptionMenu(self.newtestwindow, self.varPF34cwleft, *self.choicePF).grid(column = 1, row = 5)
-        OptionMenu(self.newtestwindow, self.varPF34cwright, *self.choicePF).grid(column = 2, row = 5)
-        OptionMenu(self.newtestwindow, self.varPF34ccwleft, *self.choicePF).grid(column = 3, row = 5)
-        OptionMenu(self.newtestwindow, self.varPF34ccwright, *self.choicePF).grid(column = 4, row = 5)
+        self.optPF34cwleft = OptionMenu(self.newtestwindow, self.varPF34cwleft, *self.choicePF).grid(column = 1, row = 5)
+        self.optPF34cwright = OptionMenu(self.newtestwindow, self.varPF34cwright, *self.choicePF).grid(column = 2, row = 5)
+        self.optPF34ccwleft = OptionMenu(self.newtestwindow, self.varPF34ccwleft, *self.choicePF).grid(column = 3, row = 5)
+        self.optPF34ccwright = OptionMenu(self.newtestwindow, self.varPF34ccwright, *self.choicePF).grid(column = 4, row = 5)
         #22mm Slow Spin Zero
-        OptionMenu(self.newtestwindow, self.varPFslowcwleft, *self.choicePF).grid(column = 1, row = 7)
-        OptionMenu(self.newtestwindow, self.varPFslowcwright, *self.choicePF).grid(column = 2, row = 7)
-        OptionMenu(self.newtestwindow, self.varPFslowccwleft, *self.choicePF).grid(column = 3, row = 7)
-        OptionMenu(self.newtestwindow, self.varPFslowccwright, *self.choicePF).grid(column = 4, row = 7)
+        self.optPFslowcwleft = OptionMenu(self.newtestwindow, self.varPFslowcwleft, *self.choicePF).grid(column = 1, row = 7)
+        self.optPFslowcwright = OptionMenu(self.newtestwindow, self.varPFslowcwright, *self.choicePF).grid(column = 2, row = 7)
+        self.optPFslowccwleft = OptionMenu(self.newtestwindow, self.varPFslowccwleft, *self.choicePF).grid(column = 3, row = 7)
+        self.optPFslowccwright = OptionMenu(self.newtestwindow, self.varPFslowccwright, *self.choicePF).grid(column = 4, row = 7)
 
 
         #Clockwise
@@ -260,7 +256,7 @@ class CreateTest:
 
         self.checkretest = Checkbutton(self.newtestwindow, text="Retest?", variable=self.retest).grid(column=6, row=12)
         self.optwheeltype = OptionMenu(self.newtestwindow, self.wheeltype, *self.choicewheel).grid(column=6, row=13)
-        self.entryordernumber = Entry(self.newtestwindow, textvariable=ordernumber).grid(column=6, row=14)
+        self.entryordernumber = Entry(self.newtestwindow, textvariable=self.ordernumber).grid(column=6, row=14)
         self.optseptype = OptionMenu(self.newtestwindow, self.separatortype, *self.choiceseparator).grid(column=6, row=15)
         self.optwheellayout = OptionMenu(self.newtestwindow, self.layouttype, *self.choicelayout).grid(column=6, row=16)
         self.entryserialwheel = Entry(self.newtestwindow, textvariable=self.serialwheel).grid(column=6, row=17)
@@ -288,11 +284,18 @@ class CreateTest:
 
         Button(self.newtestwindow, text="Print Entries", command=lambda:print(self.cw1.get(), self.cw2.get())).grid(column=5, row=32)
         Button(self.newtestwindow, text="CLOSE", command=self.newtestwindow.destroy).grid(column=5, row=30)
-        Button(self.newtestwindow,text="SAVE").grid(column=5, row=33, command=lambda: self.printvar)
+        Button(self.newtestwindow,text="SAVE",command=lambda: self.printvar()).grid(column=5, row=33)
 
     def printvar(self):
         newvar = self.cwactvariables
-        for i in newvar:
-            print(i)
+        #print(newvar[2].get())
+        print(self.cwactvariables[0].get())
+        # for i in newvar:
+        #     print(i.get())
+
+    def savedata(self):
+        print("Saving Data")
+
+
 
 
